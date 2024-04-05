@@ -1,0 +1,75 @@
+
+
+.navSection {
+  display: flex;
+  justify-content: space-around; /* Adjust spacing */
+  margin-left: 44rem;
+  margin-top: 2rem;
+  color:#182BCD;
+}
+
+.navSection a {
+  text-decoration: none;
+  color: inherit;
+  margin: 0 3rem; /* Add margin between links */
+}
+
+.navSection h4 {
+  margin: 0;
+  padding: 0;
+}
+
+  body{
+    background-color:#BFD641 ;
+  }
+
+  .logo{
+    position: absolute;
+    top: 0;
+    width: 5rem;
+    height: 5rem;
+    margin-left: 4rem;
+    margin-top:  2rem;
+    border-radius: 14px;
+  }
+
+  .nav_text{
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .homePageText{
+    margin-top: 8rem;
+    margin-left: 4rem;
+  }
+
+  .homeText1{
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal; 
+  }
+
+  .homeText2{
+    color: #CD18A6;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal; 
+  }
+
+  .heroImage{
+    position: absolute;
+    top: 0;
+    width: 25rem;
+    height: 17rem;
+    margin-left: 47.6rem;
+    margin-top: 10rem;
+    border-radius: 16rem;
+  }
+
+  #homeSearchField{
+    margin-top: 9rem;
+    width: 45%;
+    margin-left: 20rem;
+  }
+  
