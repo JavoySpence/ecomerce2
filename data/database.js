@@ -18,15 +18,19 @@ export const getAllMen = async () => {
     const result = await pool.query('SELECT * FROM MEN ');
     return result[0];
 };
-export const getAllMen2 = async (limit = 3, offset = 0) => {
 
-    limit = Number.isInteger(limit) && limit > 0 ? limit : 10;
-    offset = Number.isInteger(offset) && offset >= 0 ? offset : 0;
-    
-    const result = await pool.query('SELECT * FROM MEN LIMIT ? OFFSET ?', [limit, offset]);
+
+// Modify your existing query in getAllMen2
+export const getAllMen2 = async (limit , offset) => {
+    const result = await pool.query('SELECT * FROM men LIMIT ? OFFSET ?', [limit, offset]);
     return result[0];
 };
 
+// Modify your existing query in getAllMenCount2
+export const getAllMenCount2 = async () => {
+    const result = await pool.query('SELECT COUNT(*) AS itemCount FROM men');
+    return result[0].itemCount;
+};
 export const getAllPerson = async () => {
     const result = await pool.query('SELECT * FROM person ');
     return result[0];
@@ -42,7 +46,10 @@ export const newMenItem = async (oMen) => {
 
 
 
-export  const getAllMenCount2 = async () => {
-    const result =  await pool.query('SELECT COUNT(*) AS itemCount FROM men');
-    return result[0].itemCount;
- };
+// export const getAllMen2 = async (limit = 3, offset = 0) => {
+//     limit = Number.isInteger(limit) && limit > 0 ? limit : 10;
+//     offset = Number.isInteger(offset) && offset >= 0 ? offset : 0;
+    
+//     const result = await pool.query('SELECT * FROM MEN LIMIT ? OFFSET ?', [limit, offset]);
+//     return result; // Just return the result array directly, no need to access [0] here
+// };
