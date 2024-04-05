@@ -12,30 +12,39 @@
     <!-- <div class="container"> -->
           
                <section class="navSection">
+                <a href="/"><h4  class="nav_text">HOME</h4></a>
                  <a href=""><h4 class="nav_text">WOMEN</h4></a>
                  <a href=""><h4  class="nav_text">CHILDREN</h4></a>
-                 <a href="/menPage"><h4  class="nav_text">MEN</h4></a>
                 </section>
 
                 <section>
                     <img class="logo" src="public/images/b44e7f2ed7c437697dfe9aac4e60c52b.jpg" alt="">
                 </section>
+               
 
-                <section class="homePageText">
-                    <h2 class="homeText1">SHOP WITH US</h2>
-                    <h2 class="homeText2">BEST QUALITIES</h2>
-                    <h2 class="homeText2">VERY BEAUTIFUL NEW ARRIVALS</h2>
-                </section>
-
-                <section class="heroSection">
-                    <img class="heroImage" src="public/images/ab5360a2a1ea988d82550c86e2a7b113.jpg" alt="">
-                </section>
-
-                <section class="input-group flex-nowrap" id="homeSearchField">
+                <section class="input-group flex-nowrap" id="menSearchField">
                     <span class="input-group-text" id="addon-wrapping">@</span>
                     <input type="text" class="form-control" placeholder="SEARCH PRODUCT" aria-label="Username" aria-describedby="addon-wrapping" >
                     <button  class="btn btn-primary">SEARCH</button>
                 </section>
+
+                
+<div class="container-lg">
+    <div class="card-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin-left: 1rem; margin-top: 4rem;">
+        <% if (data && data.length) { %>
+            <% data.forEach(function(item) { %>
+                <div class="card" id="menPageCard" style="width: 22rem; margin-bottom: 20px;">
+                    <img src="uploads/<%= item.image %>" class="card-img-top" alt="Men's Item Image" style="width: 100%; height: 200px; object-fit: cover; border-radius: 30px;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="margin-left: 8rem;"><%= item.brand %></h5>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No men's items available</p>
+        <% } %>
+    </div>
+</div>
     
 </body>
 </html>

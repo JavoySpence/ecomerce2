@@ -19,9 +19,9 @@
   padding: 0;
 }
 
-  body{
+  /* body{
     background-color:#BFD641 ;
-  }
+  } */
 
   .logo{
     position: absolute;
@@ -69,12 +69,6 @@
 
   #homeSearchField{
     margin-top: 9rem;
-    width: 45%;
-    margin-left: 23rem;
-  }
-  
-  #menSearchField{
-    margin-top: 3rem;
     width: 45%;
     margin-left: 23rem;
   }
