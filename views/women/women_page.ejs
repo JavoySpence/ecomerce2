@@ -19,11 +19,13 @@
         <img class="logo" src="public/images/b44e7f2ed7c437697dfe9aac4e60c52b.jpg" alt="">
     </section>
 
-    <section class="input-group flex-nowrap"id="menSearchField">
-        <span class="input-group-text" id="addon-wrapping">@</span>
-        <input type="text" class="form-control" placeholder="SEARCH PRODUCT" aria-label="Username" aria-describedby="addon-wrapping">
-        <button class="btn btn-primary">SEARCH</button>
-    </section>
+    <form action="/searchWomen" method="GET">
+        <section class="input-group flex-nowrap" id="menSearchField">
+            <span class="input-group-text" id="addon-wrapping">@</span>
+            <input type="text" class="form-control" placeholder="SEARCH PRODUCT" aria-label="Username" aria-describedby="addon-wrapping" name="searchTerm">
+            <button class="btn btn-primary" type="submit">SEARCH</button>
+        </section>
+    </form>
 
     <div class="container-lg">
         <div class="card-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin-left: 1rem; margin-top: 4rem;">

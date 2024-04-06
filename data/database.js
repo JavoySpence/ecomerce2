@@ -43,6 +43,21 @@ export const newMenItem = async (oMen) => {
 }
 
 
+export const searchMen = async (searchTerm) => {
+    try{
+        const result = await pool.query(`
+            SELECT * FROM men WHERE item_name LIKE ?
+        `, [`%${searchTerm}%`]);
+        console.log(result);
+        return result[0];
+    } catch (error) {
+        console.error('Error searching items:', error);
+        throw error; 
+    }
+}
+
+
+
 
 // ============================================================================================================================
 // WOMEN SECTION
@@ -73,6 +88,18 @@ export const getAllWomenCount2 = async () => {
     return result[0].itemCount;
 };
 
+export const searchWomen = async (searchTerm) => {
+    try{
+        const result = await pool.query(`
+            SELECT * FROM women WHERE item_name LIKE ?
+        `, [`%${searchTerm}%`]);
+        console.log(result);
+        return result[0];
+    } catch (error) {
+        console.error('Error searching items:', error);
+        throw error; 
+    }
+}
 
 // ===========================================================================================================================================
 // CHILDREN
@@ -102,4 +129,38 @@ export const getAllChildrenCount2 = async () => {
 };
 
 
+export const searchChildren = async (searchTerm) => {
+    try{
+        const result = await pool.query(`
+            SELECT * FROM children WHERE item_name LIKE ?
+        `, [`%${searchTerm}%`]);
+        console.log(result);
+        return result[0];
+    } catch (error) {
+        console.error('Error searching items:', error);
+        throw error; 
+    }
+}
+
+// ==============================================================================================================
+// SEARCH FUNCTION FOR HOME PageTransitionEvent
+// ===============================================================================================================
+
+
+export const searchItems = async (searchTerm) => {
+    try {
+        const result = await pool.query(`
+            SELECT * FROM children WHERE item_name LIKE ?
+            UNION
+            SELECT * FROM men WHERE item_name LIKE ?
+            UNION
+            SELECT * FROM women WHERE item_name LIKE ?
+        `, [`%${searchTerm}%`, `%${searchTerm}%`, `%${searchTerm}%`]);
+        console.log(result);
+        return result[0];
+    } catch (error) {
+        console.error('Error searching items:', error);
+        throw error; // Handle the error appropriately
+    }
+}
 

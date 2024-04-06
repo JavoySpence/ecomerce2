@@ -13,7 +13,7 @@
           
                <section class="navSection">
                  <a href="womenPage"><h4 class="nav_text">WOMEN</h4></a>
-                 <a href=""><h4  class="nav_text">CHILDREN</h4></a>
+                 <a href="/childrenPage"><h4  class="nav_text">CHILDREN</h4></a>
                  <a href="/menPage"><h4  class="nav_text">MEN</h4></a>
                 </section>
 
@@ -31,11 +31,15 @@
                     <img class="heroImage" src="public/images/ab5360a2a1ea988d82550c86e2a7b113.jpg" alt="">
                 </section>
 
-                <section class="input-group flex-nowrap" id="homeSearchField">
-                    <span class="input-group-text" id="addon-wrapping">@</span>
-                    <input type="text" class="form-control" placeholder="SEARCH PRODUCT" aria-label="Username" aria-describedby="addon-wrapping" >
-                    <button  class="btn btn-primary">SEARCH</button>
-                </section>
+                <form action="/combinedSearch" method="GET">
+                    <section class="input-group flex-nowrap" id="homeSearchField">
+                        <span class="input-group-text" id="addon-wrapping">@</span>
+                        <input type="text" name="searchTerm" class="form-control" placeholder="SEARCH PRODUCT" aria-label="Username" aria-describedby="addon-wrapping">
+                        <button type="submit" class="btn btn-primary">SEARCH</button>
+                    </section>
+                </form>
+                
+                
     
 </body>
 </html>

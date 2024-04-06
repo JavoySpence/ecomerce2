@@ -1,6 +1,6 @@
 import express from 'express';
 import paginate from 'express-paginate';
-import { getAllMen, getAllPerson, getAllMen2, getAllMenCount2  } from '../data/database.js';
+import { getAllMen, getAllPerson, getAllMen2, getAllMenCount2, searchMen  } from '../data/database.js';
 
 const menRoutes = express.Router();
 
@@ -31,6 +31,18 @@ menRoutes.get('/menPage', paginate.middleware(3, 50), async (req, res) => {
       itemCount: itemCount,
       pages: paginate.getArrayPages(req)(3, pageCount, req.query.page)
     });
+})
+
+
+menRoutes.get('/searchMen', async (req, res) => {
+  try {
+      const searchTerm = req.query.searchTerm;
+      const searchList = await searchMen(searchTerm);
+      res.render('men/menSearchResults', {searchList})
+  } catch (error) {
+      console.error('Error searching items:', error);
+      res.status(500).json({ error: 'Internal server error' });
+  }
 })
 
 
