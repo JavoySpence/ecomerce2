@@ -8,9 +8,10 @@ const PORT = 3016;
 app.set('view engine', 'ejs');
 
 
-
 import pagesRoute from './routes/pagesRoutes.js';
 import menRoutes from './routes/menRoutes.js';
+import womenRoutes from './routes/womenRoutes.js';
+import childrenRoutes from './routes/childrenRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 
 
@@ -23,7 +24,9 @@ app.use(morgan('dev'));
 
 app.use('/', pagesRoute);
 app.use('/', menRoutes);
+app.use('/', womenRoutes);
 app.use('/', uploadRoutes);
+app.use('/', childrenRoutes);
 
 app.use('/uploads', express.static('uploads'));
 

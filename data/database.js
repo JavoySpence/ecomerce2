@@ -19,18 +19,16 @@ export const getAllMen = async () => {
     return result[0];
 };
 
-
-// Modify your existing query in getAllMen2
 export const getAllMen2 = async (limit , offset) => {
     const result = await pool.query('SELECT * FROM men LIMIT ? OFFSET ?', [limit, offset]);
     return result[0];
 };
 
-// Modify your existing query in getAllMenCount2
 export const getAllMenCount2 = async () => {
     const result = await pool.query('SELECT COUNT(*) AS itemCount FROM men');
     return result[0].itemCount;
 };
+
 export const getAllPerson = async () => {
     const result = await pool.query('SELECT * FROM person ');
     return result[0];
@@ -46,10 +44,62 @@ export const newMenItem = async (oMen) => {
 
 
 
-// export const getAllMen2 = async (limit = 3, offset = 0) => {
-//     limit = Number.isInteger(limit) && limit > 0 ? limit : 10;
-//     offset = Number.isInteger(offset) && offset >= 0 ? offset : 0;
-    
-//     const result = await pool.query('SELECT * FROM MEN LIMIT ? OFFSET ?', [limit, offset]);
-//     return result; // Just return the result array directly, no need to access [0] here
-// };
+// ============================================================================================================================
+// WOMEN SECTION
+// =============================================================================================================================
+
+
+export const getAllwomen = async () => {
+    const result = await pool.query('SELECT * FROM women ');
+    return result[0];
+};
+
+
+export const newWomenItem = async (oWomen) => {
+    const result = await pool.query(
+        'INSERT INTO women (item_name, brand, image, price, description, person) VALUES (?, ?, ?, ?, ?, ?)',
+        [oWomen.item_name, oWomen.brand, oWomen.image, oWomen.price, oWomen.description, oWomen.person]
+    );
+    return result[0];
+}
+
+export const getAllWomen2 = async (limit , offset) => {
+    const result = await pool.query('SELECT * FROM women LIMIT ? OFFSET ?', [limit, offset]);
+    return result[0];
+};
+
+export const getAllWomenCount2 = async () => {
+    const result = await pool.query('SELECT COUNT(*) AS itemCount FROM women');
+    return result[0].itemCount;
+};
+
+
+// ===========================================================================================================================================
+// CHILDREN
+// ===========================================================================================================================================
+
+export const getAllChildren = async () => {
+    const result = await pool.query('SELECT * FROM children ');
+    return result[0];
+};
+
+export const newChildrenItem = async (oChildren) => {
+    const result = await pool.query(
+        'INSERT INTO children (item_name, brand, image, price, description, person) VALUES (?, ?, ?, ?, ?, ?)',
+        [oChildren.item_name, oChildren.brand, oChildren.image, oChildren.price, oChildren.description, oChildren.person]
+    );
+    return result[0];
+};
+
+export const getAllChildren2 = async (limit , offset) => {
+    const result = await pool.query('SELECT * FROM children LIMIT ? OFFSET ?', [limit, offset]);
+    return result[0];
+};
+
+export const getAllChildrenCount2 = async () => {
+    const result = await pool.query('SELECT COUNT(*) AS itemCount FROM children');
+    return result[0].itemCount;
+};
+
+
+

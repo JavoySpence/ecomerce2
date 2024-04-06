@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="scss/_utilities.scss.">
+    <link rel="stylesheet" href="public/styles.css">
+</head>
+<body>
+    <section class="navSection">
+        <a href="/"><h4 class="nav_text">HOME</h4></a>
+        <a href="/menPage"><h4 class="nav_text">MEN</h4></a>
+        <a href=""><h4 class="nav_text">CHILDREN</h4></a>
+    </section>
+
+    <section>
+        <img class="logo" src="public/images/b44e7f2ed7c437697dfe9aac4e60c52b.jpg" alt="">
+    </section>
+
+    <section class="input-group flex-nowrap"id="menSearchField">
+        <span class="input-group-text" id="addon-wrapping">@</span>
+        <input type="text" class="form-control" placeholder="SEARCH PRODUCT" aria-label="Username" aria-describedby="addon-wrapping">
+        <button class="btn btn-primary">SEARCH</button>
+    </section>
+
+    <div class="container-lg">
+        <div class="card-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin-left: 1rem; margin-top: 4rem;">
+            <% if (data && data.length) { %>
+                <% data.forEach(function(item) { %>
+                    <div class="card" id="womenPageCard" style="width: 22rem; margin-bottom: 20px;">
+                        <img src="uploads/<%= item.image %>" class="card-img-top" alt="Women's Item Image" style="width: 100%; height: 200px; object-fit: cover; border-radius: 30px;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="margin-left: 8rem;"><%= item.brand %></h5>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No women's items available</p>
+            <% } %>
+        </div>
+        
+        <!-- Pagination -->
+        <nav aria-label="Page navigation" class="mt-5 ml-5" style="margin-left: 28rem;">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="/womenPage?page=1" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <!-- Insert dynamic pagination links here -->
+                <li class="page-item" style="margin-left: 2rem;">
+                    <a class="page-link" href="/womenPage?page=2" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+</body>
+</html>
