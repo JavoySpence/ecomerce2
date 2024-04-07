@@ -36,15 +36,21 @@ womenRoutes.get('/womenPage', paginate.middleware(3, 50), async (req, res) => {
   
   womenRoutes.get('/searchWomen', async (req, res) => {
     try {
-        const searchTerm = req.query.searchTerm;
-        const searchList = await searchWomen(searchTerm);
-        res.render('women/womenSearchWomen', {searchList})
+      const searchTerm = req.query.searchTerm;
+  
+      if (!searchTerm || searchTerm.trim() === '') {
+        res.redirect('back');
+        return;
+      }
+  
+      const searchList = await searchWomen(searchTerm);
+      res.render('women/womenSearchWomen', { searchList });
     } catch (error) {
-        console.error('Error searching items:', error);
-        res.status(500).json({ error: 'Internal server error' });
+      console.error('Error searching items:', error);
+      res.status(500).json({ error: 'Internal server error' });
     }
   });
-
+  
 
 
 
