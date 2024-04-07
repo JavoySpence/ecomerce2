@@ -19,10 +19,12 @@
                     <div class="card" style="width: 25rem; height: auto;">
                         <img src="/uploads/<%= item.image %>" alt="Item Image" style="width: 100%; height: auto; object-fit: cover; display: block; margin: 0 auto;">
                         <div class="card-body">
+                            <img src="" alt="">
                             <h5 class="card-title"><%= item.brand %></h5>
                             <p class="card-text"><%= item.item_name %></p>
                             <p class="card-text"><%= item.category %></p>
                             <p class="card-text"><%= item.price %></p>
+                            <button class="btn btn-primary" onclick="addToCart('<%= item.id %>','<%= item.item_name %>', '<%= item.price %>')">ADD TO CART</button>
                         </div>
                     </div>
                 <% }); %>

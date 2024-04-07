@@ -19,6 +19,11 @@
         <img class="logo" src="public/images/b44e7f2ed7c437697dfe9aac4e60c52b.jpg" alt="">
     </section>
 
+    <section >
+        <a href="/cart_list"><h4 class="cart_image" ><img src="uploads/th.jpeg" alt="" class="actual_image"></h4></a>
+    </section>
+
+
     <form action="/searchWomen" method="GET">
         <section class="input-group flex-nowrap" id="menSearchField">
             <span class="input-group-text" id="addon-wrapping">@</span>
@@ -36,6 +41,7 @@
                         <div class="card-body">
                             <h5 class="card-title" style="margin-left: 8rem;"><%= item.brand %></h5>
                         </div>
+                        <button class="btn btn-primary" onclick="addToCart('<%= item.id %>','<%= item.item_name %>', '<%= item.price %>')">ADD TO CART</button>
                        
                     </div>
                 <% }); %>

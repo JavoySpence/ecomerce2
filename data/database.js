@@ -170,9 +170,9 @@ export const searchItems = async (searchTerm) => {
 // SHOPPING CARTS
 // ======================================================================================================================
 
-export const checkIfExists = async (id, quantity, price) => {
+export const checkIfExists = async (id,item_name, quantity, price, ) => {
     try {
-        const result = await pool.query('SELECT * FROM shopping_cart WHERE id = ? AND quantity = ? AND price = ?', [id, quantity, price]);
+        const result = await pool.query('SELECT * FROM shopping_cart WHERE id = ? AND item_name = ?  AND quantity = ? AND price = ?', [id, item_name,quantity, price ]);
         return result[0]; 
     } catch (error) {
         
@@ -183,20 +183,11 @@ export const checkIfExists = async (id, quantity, price) => {
 
 
 
-
 export const updateQuantity = async (id) => {
-    const result = await pool.query(
-        'UPDATE shopping_cart SET quantity = quantity + 1, price = (SELECT price FROM shopping_cart WHERE id = ?) WHERE id = ?',
-        [id, id]
-    );
-    return result; 
-};
-
-export const insertNewProduct = async (id, quantity, price) => {
     try {
         const result = await pool.query(
-            'INSERT INTO shopping_cart (id, quantity, price) VALUES (?, ?, ?)',
-            [id, quantity, price]
+            'UPDATE shopping_cart SET quantity = quantity + 1 WHERE id = ?',
+            [id]
         );
         return result;
     } catch (error) {
@@ -204,5 +195,38 @@ export const insertNewProduct = async (id, quantity, price) => {
         throw error;
     }
 };
+
+
+export const insertNewProduct = async (id, item_name, quantity, price) => {
+  
+        const result = await pool.query(
+            'INSERT INTO shopping_cart (id, item_name, quantity, price) VALUES (?, ?, ?, ?)',
+            [id, item_name, quantity, price]
+        );
+        return result;
+  
+};
+
+
+export const getCartList = async () => {
+    try {
+        const result = await pool.query('SELECT * FROM shopping_cart');
+        return result[0];
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+};
+
+
+export const deleteItem = async (id) => {
+  try {
+    const result = await pool.query('DELETE FROM shopping_cart WHERE id =?', [id]);
+    return result[0];
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
 
 

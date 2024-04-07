@@ -20,6 +20,10 @@
                 <section>
                     <img class="logo" src="public/images/b44e7f2ed7c437697dfe9aac4e60c52b.jpg" alt="">
                 </section>
+
+                <section >
+                    <a href="/cart_list"><h4 class="cart_image" ><img src="uploads/th.jpeg" alt="" class="actual_image"></h4></a>
+                </section>
                
 
                 <form action="/searchMen" method="GET">
@@ -40,7 +44,7 @@
                     <div class="card-body">
                         <h5 class="card-title" style="margin-left: 8rem;"><%= item.brand %></h5>
                     </div>
-                    <button class="btn btn-primary" onclick="addToCart('<%= item.id %>', '<%= item.price %>')">ADD TO CART</button>
+                    <button class="btn btn-primary" onclick="addToCart('<%= item.id %>','<%= item.item_name %>', '<%= item.price %>')">ADD TO CART</button>
 
 
                 </div>
@@ -82,7 +86,7 @@
 </div>
 
 <script>
-    async function addToCart(id, price) {
+    async function addToCart(id, item_name, price) {
         const quantity = 1; // Assuming you want to add one item by default
 
         try {
@@ -93,8 +97,10 @@
                 },
                 body: JSON.stringify({
                     id: id,
+                    item_name: item_name,
                     quantity: quantity,
                     price: price,
+                  
               
                 })
             });

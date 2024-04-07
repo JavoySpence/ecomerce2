@@ -10,6 +10,7 @@
 </head>
 <body>
     <section class="navSection">
+    
         <a href="/"><h4 class="nav_text">HOME</h4></a>
         <a href="/menPage"><h4 class="nav_text">MEN</h4></a>
         <a href=""><h4 class="nav_text">CHILDREN</h4></a>
@@ -17,6 +18,10 @@
 
     <section>
         <img class="logo" src="public/images/b44e7f2ed7c437697dfe9aac4e60c52b.jpg" alt="">
+    </section>
+
+    <section >
+        <a href="/cart_list"><h4 class="cart_image" ><img src="uploads/th.jpeg" alt="" class="actual_image"></h4></a>
     </section>
 
     <form action="/searchChildren" method="GET">
@@ -37,6 +42,7 @@
                         <div class="card-body">
                             <h5 class="card-title" style="margin-left: 8rem;"><%= item.brand %></h5>
                         </div>
+                        <button class="btn btn-primary" onclick="addToCart('<%= item.id %>','<%= item.item_name %>', '<%= item.price %>')">ADD TO CART</button>
                     </div>
                 <% }); %>
             <% } else { %>

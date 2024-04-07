@@ -83,6 +83,23 @@
     width: 10rem;
   }
 
+  .carth1{
+    background-color:#93D51E ;
+    color: white;
+  }
+
+  .cart_image{
+    position: absolute;
+    top: 0;
+    margin-left: 40rem;
+    margin-top: 2rem;
+    height: 2rem;
+  }
+
+  .actual_image{
+    width: 3rem;
+    
+  }
 
 
 
