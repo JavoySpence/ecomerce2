@@ -220,13 +220,14 @@ export const getCartList = async () => {
 
 
 export const deleteItem = async (id) => {
-  try {
-    const result = await pool.query('DELETE FROM shopping_cart WHERE id =?', [id]);
-    return result[0];
-  } catch (error) {
-    console.error(error);
-    throw error;
+    try {
+      const result = await pool.query('DELETE FROM shopping_cart WHERE id = ? LIMIT 1', [id]);
+      return result[0];
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
-}
+  
 
 

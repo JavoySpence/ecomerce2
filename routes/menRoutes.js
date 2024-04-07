@@ -36,14 +36,21 @@ menRoutes.get('/menPage', paginate.middleware(3, 50), async (req, res) => {
 
 menRoutes.get('/searchMen', async (req, res) => {
   try {
-      const searchTerm = req.query.searchTerm;
-      const searchList = await searchMen(searchTerm);
-      res.render('men/menSearchResults', {searchList})
+    const searchTerm = req.query.searchTerm;
+
+    if (!searchTerm || searchTerm.trim() === '') {
+      res.redirect('back');
+      return;
+    }
+
+    const searchList = await searchMen(searchTerm);
+    res.render('men/menSearchResults', { searchList });
   } catch (error) {
-      console.error('Error searching items:', error);
-      res.status(500).json({ error: 'Internal server error' });
+    console.error('Error searching items:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
-})
+});
+
 
 
 

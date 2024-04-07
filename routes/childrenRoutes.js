@@ -34,16 +34,24 @@ childrenRoutes.get('/childrenPage', paginate.middleware(3, 50), async (req, res)
   
 
 
-childrenRoutes.get('/searchChildren', async (req, res) => {
+  childrenRoutes.get('/searchChildren', async (req, res) => {
     try {
-        const searchTerm = req.query.searchTerm;
-        const searchList = await searchChildren(searchTerm);
-        res.render('children/childrenSearchResults', {searchList})
+      const searchTerm = req.query.searchTerm;
+  
+      if (!searchTerm || searchTerm.trim() === '') {
+        res.redirect('back');
+        return;
+      }
+  
+      const searchList = await searchChildren(searchTerm);
+      res.render('children/childrenSearchResults', { searchList });
     } catch (error) {
-        console.error('Error searching items:', error);
-        res.status(500).json({ error: 'Internal server error' });
+      console.error('Error searching items:', error);
+      res.status(500).json({ error: 'Internal server error' });
     }
-})
+  });
+  
+  
 
 
 export default childrenRoutes;

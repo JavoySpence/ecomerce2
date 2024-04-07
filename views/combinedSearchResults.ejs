@@ -37,6 +37,39 @@
 
 
 
+<script>
+    async function addToCart(id, item_name, price) {
+        const quantity = 1; // Assuming you want to add one item by default
+
+        try {
+            const response = await fetch('/cart/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: id,
+                    item_name: item_name,
+                    quantity: quantity,
+                    price: price,
+                  
+              
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add item to cart');
+            }
+
+            const data = await response.json();
+            console.log(data.message); // Log success message
+
+        } catch (error) {
+             console.error('Error', error);
+        }
+    }
+</script>
+
 
 
 

@@ -11,13 +11,20 @@ pagesRoute.get('/', (req, res) => {
 pagesRoute.get('/combinedSearch', async (req, res) => {
     try {
         const searchTerm = req.query.searchTerm;
+
+        if (!searchTerm || searchTerm.trim() === '') {
+            res.redirect('back');
+            return;
+        }
+
         const searchList = await searchItems(searchTerm);
-        res.render('combinedSearchResults', {searchList})
+        res.render('combinedSearchResults', { searchList });
     } catch (error) {
         console.error('Error searching items:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
 
 
 export  default pagesRoute;
