@@ -14,6 +14,7 @@ import womenRoutes from './routes/womenRoutes.js';
 import childrenRoutes from './routes/childrenRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 import shoppinCartRoutes from './routes/shoppingCart.js';
+import adminRoutes from './routes/adminDashboard.js';
 
 
 
@@ -30,6 +31,7 @@ app.use('/', womenRoutes);
 app.use('/', uploadRoutes);
 app.use('/', childrenRoutes);
 app.use('/', shoppinCartRoutes);
+app.use('/', adminRoutes);
 
 
 app.use('/uploads', express.static('uploads'));
