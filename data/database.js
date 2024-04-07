@@ -1,5 +1,6 @@
-import mysql from 'mysql2';
+import mysql, { createServer } from 'mysql2';
 import dotenv from 'dotenv';
+
 
 dotenv.config({path: './config.env'});
 
@@ -162,5 +163,46 @@ export const searchItems = async (searchTerm) => {
         console.error('Error searching items:', error);
         throw error; // Handle the error appropriately
     }
-}
+};
+
+
+// ======================================================================================================================
+// SHOPPING CARTS
+// ======================================================================================================================
+
+export const checkIfExists = async (id, quantity, price) => {
+    try {
+        const result = await pool.query('SELECT * FROM shopping_cart WHERE id = ? AND quantity = ? AND price = ?', [id, quantity, price]);
+        return result[0]; 
+    } catch (error) {
+        
+        console.error(error);
+        throw error; 
+    }
+};
+
+
+
+
+export const updateQuantity = async (id) => {
+    const result = await pool.query(
+        'UPDATE shopping_cart SET quantity = quantity + 1, price = (SELECT price FROM shopping_cart WHERE id = ?) WHERE id = ?',
+        [id, id]
+    );
+    return result; 
+};
+
+export const insertNewProduct = async (id, quantity, price) => {
+    try {
+        const result = await pool.query(
+            'INSERT INTO shopping_cart (id, quantity, price) VALUES (?, ?, ?)',
+            [id, quantity, price]
+        );
+        return result;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+};
+
 

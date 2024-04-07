@@ -13,6 +13,8 @@ import menRoutes from './routes/menRoutes.js';
 import womenRoutes from './routes/womenRoutes.js';
 import childrenRoutes from './routes/childrenRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
+import shoppinCartRoutes from './routes/shoppingCart.js';
+
 
 
 app.use(express.json({limit: '1kb'}))
@@ -27,6 +29,8 @@ app.use('/', menRoutes);
 app.use('/', womenRoutes);
 app.use('/', uploadRoutes);
 app.use('/', childrenRoutes);
+app.use('/', shoppinCartRoutes);
+
 
 app.use('/uploads', express.static('uploads'));
 

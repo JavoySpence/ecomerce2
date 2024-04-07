@@ -40,7 +40,13 @@
                     <div class="card-body">
                         <h5 class="card-title" style="margin-left: 8rem;"><%= item.brand %></h5>
                     </div>
+                    <button class="btn btn-primary" onclick="addToCart('<%= item.id %>', '<%= item.price %>')">ADD TO CART</button>
+
+
                 </div>
+
+           
+
             <% }); %>
         <% } else { %>
             <p>No men's items available</p>
@@ -74,6 +80,38 @@
     
     
 </div>
+
+<script>
+    async function addToCart(id, price) {
+        const quantity = 1; // Assuming you want to add one item by default
+
+        try {
+            const response = await fetch('/cart/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: id,
+                    quantity: quantity,
+                    price: price,
+              
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add item to cart');
+            }
+
+            const data = await response.json();
+            console.log(data.message); // Log success message
+
+        } catch (error) {
+             console.error('Error', error);
+        }
+    }
+</script>
+
     
 </body>
 </html>
