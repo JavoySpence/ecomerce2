@@ -37,7 +37,7 @@
         <div class="card-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin-left: 1rem; margin-top: 4rem;">
             <% if (data && data.length) { %>
                 <% data.forEach(function(item) { %>
-                    <div class="card" id="womenPageCard" style="width: 22rem; margin-bottom: 20px;">
+                    <div class="card" id="womenPageCard" style="width: 15rem; margin-bottom: 20px; margin-left: 3rem;">
                         <img src="uploads/<%= item.image %>" class="card-img-top" alt="Women's Item Image" style="width: 100%; height: 200px; object-fit: cover; border-radius: 30px;">
                         <div class="card-body">
                             <h5 class="card-title" style="margin-left: 8rem;"><%= item.brand %></h5>
@@ -51,7 +51,7 @@
         </div>
         
         <!-- Pagination -->
-        <nav aria-label="Page navigation" class="mt-5 ml-5" style="margin-left: 28rem;">
+        <nav aria-label="Page navigation" class="mt-5 ml-5" style="margin-left: 24rem;">
             <ul class="pagination">
                 <li class="page-item">
                     <a class="page-link" href="/childrenPage?page=1" aria-label="Previous">
